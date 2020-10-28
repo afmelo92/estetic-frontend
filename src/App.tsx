@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback } from 'react';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { slide as Menu } from 'react-burger-menu';
+import Switch from 'react-switch';
+import Header from './components/Header';
+import usePersistedState from './hooks/usePersistedState';
+import Dashboard from './pages/Dashboard';
+import GlobalStyle from './styles/global';
+import dark from './styles/themes/dark';
+import light from './styles/themes/light';
 
-function App() {
+const App: React.FC = () => {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme.title === 'light' ? dark : light);
+  }, [setTheme, theme]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <Menu right width={200}>
+          <div className="switch-container">
+            <Switch
+              onChange={toggleTheme}
+              checked={theme.title === 'dark'}
+              onHandleColor="#08f"
+              onColor="#2A0F43"
+              offColor="#3E1863"
+              handleDiameter={20}
+              height={30}
+              width={60}
+            />
+          </div>
+        </Menu>
+        <Header />
+        <Dashboard />
+        <GlobalStyle />
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;

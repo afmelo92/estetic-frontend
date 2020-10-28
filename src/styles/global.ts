@@ -23,6 +23,10 @@ export default createGlobalStyle`
     padding-left: 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .switch-container {
     position: fixed;
     right: 70px;
@@ -37,6 +41,7 @@ export default createGlobalStyle`
     right: 20px;
     top: 27px;
 
+
     @media(min-width: 900px) {
       display: none;
     }
@@ -49,6 +54,8 @@ export default createGlobalStyle`
 
   /* Color/shape of burger icon bars on hover*/
   .bm-burger-bars-hover {
+    transition: 0.2s ease-in-out;
+
     background: ${props => props.theme.color.altText};
   }
 

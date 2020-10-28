@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import Switch from 'react-switch';
 import Header from './components/Header';
@@ -17,7 +18,7 @@ const App: React.FC = () => {
   }, [setTheme, theme]);
 
   return (
-    <>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Menu right width={200}>
           <div className="switch-container">
@@ -37,7 +38,7 @@ const App: React.FC = () => {
         <Dashboard />
         <GlobalStyle />
       </ThemeProvider>
-    </>
+    </BrowserRouter>
   );
 };
 

@@ -1,14 +1,13 @@
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  border: 1px solid red;
   display: flex;
   align-items: center;
   background: ${props => props.theme.color.primary};
 `;
 
 export const Navbar = styled.nav`
-  border: 1px solid yellow;
   display: flex;
   flex: 1;
   align-items: center;
@@ -31,15 +30,33 @@ export const NavLogo = styled.div`
 `;
 
 export const Profile = styled.div`
-  border: 1px solid green;
-  display: flex;
-  max-width: 150px;
+  max-width: 270px;
+  max-height: 57px;
 
-  img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50px;
-    margin-right: 10px;
+  a {
+    padding: 5px 10px 3px 8px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: ${props => props.theme.color.altText};
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background: ${props => shade(0.2, props.theme.color.secondary)};
+    }
+
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50px;
+      margin-right: 10px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   @media (min-width: 900px) {
@@ -50,6 +67,17 @@ export const Profile = styled.div`
 export const NavItems = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.color.altText};
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: ${props => shade(0.2, props.theme.color.altText)};
+    }
+  }
 
   @media (max-width: 900px) {
     padding-right: 50px;

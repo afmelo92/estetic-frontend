@@ -11,7 +11,7 @@ const Header: React.FC = () => {
         <NavLogo>
           <h1>Estetic</h1>
           <Profile>
-            <Link to="/">
+            <Link to="/profile">
               <img src={avatar} alt="avatar" />
               <div>
                 <span>Bem vindo, </span>

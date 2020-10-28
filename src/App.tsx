@@ -5,10 +5,10 @@ import { slide as Menu } from 'react-burger-menu';
 import Switch from 'react-switch';
 import Header from './components/Header';
 import usePersistedState from './hooks/usePersistedState';
-import Dashboard from './pages/Dashboard';
 import GlobalStyle from './styles/global';
 import dark from './styles/themes/dark';
 import light from './styles/themes/light';
+import Routes from './routes';
 
 const App: React.FC = () => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
@@ -35,7 +35,7 @@ const App: React.FC = () => {
           </div>
         </Menu>
         <Header />
-        <Dashboard />
+        <Routes />
         <GlobalStyle />
       </ThemeProvider>
     </BrowserRouter>
